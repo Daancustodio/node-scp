@@ -1,0 +1,27 @@
+.JArea pre {
+    outline: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+}
+.JArea{
+    padding: 20px
+}
+.JArea .string {
+    color: green;
+}
+
+.JArea .number {
+    color: darkorange;
+}
+
+.JArea .boolean {
+    color: blue;
+}
+
+.JArea .null {
+    color: magenta;
+}
+
+.JArea .key {
+    color: red;
+}

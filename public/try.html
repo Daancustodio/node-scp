@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .JArea pre {
+            outline: 1px solid #ccc;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .JArea .string {
+            color: green;
+        }
+
+        .JArea .number {
+            color: darkorange;
+        }
+
+        .JArea .boolean {
+            color: blue;
+        }
+
+        .JArea .null {
+            color: magenta;
+        }
+
+        .JArea .key {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--TODO 点击一个button，发送一个post请求-->
+<script src="js/jump.js"></script>
+<script>
+    function testAlert() {
+        swal({
+            title: 'Submit email to run ajax request',
+            width: 600,
+            text: 'Modal with a custom image.'
+        })
+    }
+
+</script>
+<script type="text/javascript">
+    function showJson() {
+        var j = {"name": "binchen"};
+        j = JSON.stringify(j); // '{"name":"binchen"}'
+        $('#result').html(syntaxHighlight(j));
+    }
+
+    function syntaxHighlight(json) {
+        if (typeof json !== 'string') {
+            json = JSON.stringify(json, undefined, 2);
+        }
+        json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            var cls = 'number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'key';
+                } else {
+                    cls = 'string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'boolean';
+            } else if (/null/.test(match)) {
+                cls = 'null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+</script>
+<button onclick="showJson()"></button>
+<div class="JArea">
+<pre id="result">
+</pre>
+</div>
+<div class="input-filter">
+    <label for="basic-url">Your vanity URL</label>
+    <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+    </div>
+</div>
+<script></script>
+</body>
+</html>
